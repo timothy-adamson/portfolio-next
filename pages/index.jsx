@@ -77,8 +77,6 @@ const Home = () => {
 
     const yNavOffset = 96;
 
-    console.log(router, asPath);
-
     if (skillsRef && workRef && contactRef) {
       switch (asPath) {
         case "/skills":

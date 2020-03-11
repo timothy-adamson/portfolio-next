@@ -128,7 +128,7 @@ const Work = React.forwardRef((props, ref) => {
             </Link>
             <div></div>
             <a href="https://github.com/timothy-adamson">
-              <img src="/GitHub_Logo_White.png"></img>
+              <img src="/GitHub_Logo_White.png" alt="Github Logo Link"></img>
             </a>
           </LinksContainer>
         </WorkExampleContainer>

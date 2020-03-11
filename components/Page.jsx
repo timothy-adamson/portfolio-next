@@ -122,6 +122,11 @@ const Page = ({ children }) => {
           href="https://fonts.googleapis.com/css?family=Spartan:100,200,300,400,500,600,700,800,900&display=swap"
           rel="stylesheet"
         ></link>
+        <meta name="author" content="Timothy Adamson"></meta>
+        <meta
+          name="description"
+          content="Professional website of web developer Timothy Adamson"
+        ></meta>
       </Head>
       <Navbar />
       <div>{children}</div>

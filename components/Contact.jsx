@@ -72,7 +72,11 @@ const Contact = React.forwardRef((props, ref) => {
       <UnderlinedContent>
         <div>
           <a href="https://www.linkedin.com/in/timothyadamson/">
-            <img style={{ height: "36px" }} src="/LI-Logo.png"></img>
+            <img
+              style={{ height: "36px" }}
+              src="/LI-Logo.png"
+              alt="LinkedIn Logo Link"
+            ></img>
           </a>
           <div />
         </div>

@@ -24,6 +24,14 @@ const Menu = styled.ul`
   justify-content: space-around;
   align-items: center;
   margin: auto;
+  ${({ theme }) =>
+    theme.mediaQuery(
+      "sm",
+      `
+      display: grid;
+      grid-template-columns: repeat(3, 1fr)
+  `
+    )}
 `;
 
 const MenuItem = styled.li`
@@ -46,6 +54,14 @@ const MenuItem = styled.li`
   &:hover > div {
     width: 100%;
   }
+  ${({ theme }) =>
+    theme.mediaQuery(
+      "sm",
+      `
+      margin: 24px auto;
+      font-size: 16px;
+  `
+    )}
 `;
 
 const Navbar = () => {

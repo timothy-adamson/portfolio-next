@@ -1,6 +1,7 @@
 import Navbar from "./Navbar";
 import Head from "next/head";
 import { createGlobalStyle, ThemeProvider } from "styled-components";
+import { useState, useEffect, useMemo } from "react";
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -34,7 +35,7 @@ const theme = {
     white: "#f5f5f5"
   },
   breakpoints: {
-    sm: "700px",
+    sm: "800px",
     md: "1100px",
     lg: "1400px",
     full: "1532px"
@@ -42,7 +43,7 @@ const theme = {
   mediaQuery: (size, styles) => {
     switch (size) {
       case "sm":
-        return `@media (max-width: 700px) {
+        return `@media (max-width: 800px) {
           ${styles}
         }`;
       case "md":
@@ -62,6 +63,56 @@ const theme = {
 };
 
 const Page = ({ children }) => {
+  const [windowSize, setWindowSize] = useState();
+
+  const handleResize = () => setWindowSize(window.innerHeight);
+
+  useEffect(() => {
+    handleResize();
+    window.addEventListener("resize", handleResize);
+  }, []);
+
+  const theme = useMemo(
+    () => ({
+      colors: {
+        background: "#F4E8BD",
+        primary: "#082434",
+        secondary: "#2A1A3E",
+        link: "#AC1B25",
+        gold: "#DEA53E",
+        white: "#f5f5f5"
+      },
+      breakpoints: {
+        sm: "800px",
+        md: "1100px",
+        lg: "1400px",
+        full: "1532px"
+      },
+      mediaQuery: (size, styles) => {
+        switch (size) {
+          case "sm":
+            return `@media (max-width: 800px) {
+            ${styles}
+          }`;
+          case "md":
+            return `@media (max-width: 1100px) {
+            ${styles}
+          }`;
+          case "lg":
+            return `@media (max-width: 1400px) {
+            ${styles}
+          }`;
+          case "full":
+            return `@media (max-width: 1664px) {
+            ${styles}
+          }`;
+        }
+      },
+      windowSize
+    }),
+    [windowSize]
+  );
+
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyle></GlobalStyle>

@@ -19,7 +19,7 @@ const useCarousel = (pages, interval) => {
         setPage((page + 1) % pages.length || pages.length);
       }, interval);
 
-    return activeTimeout ? clearTimeout(activeTimeout) : undefined;
+    return clearTimeout(activeTimeout);
   }, [page, pages, interval, stopped]);
 
   return { page, stopCarousel };

@@ -28,8 +28,8 @@ const FixedCard = styled.div`
   width: 100%;
   margin-left: auto;
   background: url(/RevealListBG.jpg);
-  background-size: cover;
-  background-position: center 100px;
+  background-size: auto 440px;
+  background-position: 50% 120px;
   box-shadow: 0px 12px 24px -20px rgba(0, 0, 0, 0.75);
   color: ${({ theme }) => theme.colors.primary};
   border-radius: 4px;
@@ -41,12 +41,7 @@ const FixedCard = styled.div`
       `grid-column-start: 9;
       grid-column-end: 12;`
     )}
-  ${({ theme }) =>
-    theme.mediaQuery(
-      "sm",
-      `grid-column-start: 8;
-      grid-column-end: 12;`
-    )}
+  ${({ theme }) => theme.mediaQuery("sm", `display: none`)}
   opacity: ${({ visible }) => (visible ? "1" : "0")};
   transition: opacity 1s ease, height 1s ease, padding 1s ease;
 `;
@@ -74,6 +69,8 @@ const RevealList = ({ section }) => {
 
     timeoutRef.current =
       section !== "contact" ? setTimeout(() => setOpen(true), 1000) : null;
+
+    return () => clearTimeout(timeoutRef.current);
   }, [section]);
 
   open;

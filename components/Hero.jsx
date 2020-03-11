@@ -32,11 +32,12 @@ const HeroText = styled.h1`
   margin: 0;
   margin-top: auto;
   animation: 0.5s ${bounceIn} ease-out;
-
-  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
-    grid-column-start: 2;
-    font-size: 48px;
-  }
+  ${({ theme }) =>
+    theme.mediaQuery(
+      "sm",
+      `grid-column-start: 2;
+    font-size: 48px;`
+    )}
 `;
 
 const HeroSubtext = styled.h3`
@@ -50,10 +51,13 @@ const HeroSubtext = styled.h3`
   margin-bottom: auto;
   animation: 0.5s ${bounceIn} ease-out;
 
-  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
-    grid-column-start: 2;
-    font-size: 24px;
-  }
+  ${({ theme }) =>
+    theme.mediaQuery(
+      "sm",
+      `grid-column-start: 2;
+      grid-column-end: 10;
+    font-size: 24px;`
+    )}
 `;
 
 const Hero = React.forwardRef((props, ref) => {

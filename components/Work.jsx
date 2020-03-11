@@ -1,7 +1,11 @@
-import styled from "styled-components";
+import styled, { useTheme } from "styled-components";
 import Link from "next/link";
 import { Grid } from "./styled/Grid";
 import { CVicon } from "./svg/CVicon";
+
+const Container = styled.div`
+  margin-bottom: 32px;
+`;
 
 const WorkHeader = styled.h2`
   margin: 32px auto;
@@ -21,6 +25,15 @@ const WorkExampleContainer = styled.div`
   & > p {
     line-height: 24px;
   }
+  ${({ theme }) =>
+    theme.mediaQuery(
+      "sm",
+      `
+      margin-top: 24px;
+      grid-column-start: 2;
+      grid-column-end: 12;
+  `
+    )}
 `;
 
 const LinksContainer = styled.div`
@@ -43,6 +56,16 @@ const LinksContainer = styled.div`
     min-width: 2px;
     background-color: ${({ theme }) => theme.colors.white};
   }
+  ${({ theme }) =>
+    theme.mediaQuery(
+      "sm",
+      `
+    & > a > img {
+      height: 48px;
+      padding-left: 8px;
+    }
+`
+    )}
 `;
 
 const CVbutton = styled.div`
@@ -50,13 +73,26 @@ const CVbutton = styled.div`
   justify-content: flex-end;
   align-items: center;
   padding-right: 32px;
+  ${({ theme }) =>
+    theme.mediaQuery(
+      "sm",
+      `
+      font-size: 12px;
+      padding-right: 8px;
+  `
+    )}
 `;
 
 const Work = React.forwardRef((props, ref) => {
+  const { windowSize } = useTheme();
+
   return (
-    <div ref={ref}>
+    <Container ref={ref}>
       <WorkHeader>Work</WorkHeader>
-      <Grid backgroundColor={theme => theme.colors.secondary} margin="0px 32px">
+      <Grid
+        backgroundColor={theme => theme.colors.secondary}
+        margin={windowSize <= 800 ? "0px 16px" : "0px 32px"}
+      >
         <WorkExampleContainer>
           <h2>Projects</h2>
           <h4>Corporate site</h4>
@@ -83,7 +119,10 @@ const Work = React.forwardRef((props, ref) => {
               <a>
                 <CVbutton>
                   <h3>View my CV</h3>
-                  <CVicon></CVicon>
+                  <CVicon
+                    height={windowSize <= 800 ? "48" : "64"}
+                    width={windowSize <= 800 ? "48" : "64"}
+                  ></CVicon>
                 </CVbutton>
               </a>
             </Link>
@@ -94,7 +133,7 @@ const Work = React.forwardRef((props, ref) => {
           </LinksContainer>
         </WorkExampleContainer>
       </Grid>
-    </div>
+    </Container>
   );
 });
 

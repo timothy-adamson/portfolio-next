@@ -73,6 +73,7 @@ const SkillsList = styled.div`
     }
     & > span {
       position: relative;
+      margin-top: 2px;
     }
   }
   ${({ theme }) =>
@@ -81,6 +82,16 @@ const SkillsList = styled.div`
       `
       grid-column-start: 2;
       grid-column-end: 4;
+  `
+    )}
+  ${({ theme }) =>
+    theme.mediaQuery(
+      "sm",
+      `
+      font-size: 14px;
+      & > div > svg {
+        margin-right: 16px;
+      }
   `
     )}
 `;
@@ -112,6 +123,14 @@ const DescriptionContainer = styled.div`
       grid-column-end: 9;
   `
     )}
+  ${({ theme }) =>
+    theme.mediaQuery(
+      "sm",
+      `
+      grid-column-start: 7;
+      grid-column-end: 12;
+  `
+    )}
 `;
 
 const SkillDescription = styled.p`
@@ -123,6 +142,14 @@ const SkillDescription = styled.p`
   color: ${({ theme }) => theme.colors.secondary};
   background-color: ${({ theme }) => theme.colors.background};
   border-radius: 8px;
+  ${({ theme }) =>
+    theme.mediaQuery(
+      "sm",
+      `
+      font-size: 14px;
+      line-height: 24px;
+  `
+    )}
 `;
 
 const Skills = React.forwardRef((props, ref) => {

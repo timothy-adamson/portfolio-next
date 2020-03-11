@@ -6,6 +6,7 @@ const ContactContainer = styled.div`
   align-items: center;
   max-width: 1024px;
   margin: 64px auto;
+  margin-bottom: 30vh;
   padding: 32px;
   border-radius: 4px;
   color: ${({ theme }) => theme.colors.primary};
@@ -13,11 +14,20 @@ const ContactContainer = styled.div`
   & > * {
     margin: 16px 0px;
   }
+  ${({ theme }) =>
+    theme.mediaQuery(
+      "sm",
+      `
+      padding: 32px 12px;
+  `
+    )}
 `;
 
 const UnderlinedContent = styled.div`
   cursor: pointer;
   display: flex;
+  flex-wrap: wrap;
+  max-width: 100%;
   & > div {
     position: relative;
     margin-left: 24px;
@@ -34,6 +44,15 @@ const UnderlinedContent = styled.div`
       width: 100%;
     }
   }
+  ${({ theme }) =>
+    theme.mediaQuery(
+      "sm",
+      `
+      & > div {
+        margin-left: 8px;
+      };
+  `
+    )}
 `;
 
 const Contact = React.forwardRef((props, ref) => {

@@ -1,9 +1,9 @@
-export const CVicon = () => (
+export const CVicon = ({ height = "64", width = "64" }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    height="64"
+    height={height}
     viewBox="0 0 24 24"
-    width="64"
+    width={width}
   >
     <path d="M0 0h24v24H0z" fill="none" />
     <path
